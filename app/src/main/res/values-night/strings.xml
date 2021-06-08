@@ -2,4 +2,5 @@
 <resources>
         <string name="type">Type:</string>
         <string name="year">Year:</string>
+        <string name="favourite_movies">Favourite Movies</string>
 </resources>

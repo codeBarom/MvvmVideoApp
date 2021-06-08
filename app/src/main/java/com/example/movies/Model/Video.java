@@ -1,42 +1,51 @@
 package com.example.movies.Model;
 
+import androidx.room.Ignore;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-
 public class Video implements Serializable {
 
 
+        @Ignore
         @SerializedName("audioLanguage")
         @Expose
         private String audioLanguage;
 
+        @Ignore
         @SerializedName("contentType")
         @Expose
         private String contentType;
 
+        @Ignore
         @SerializedName("description")
         @Expose
         private String description;
 
+        @Ignore
         @SerializedName("durationInSeconds")
         @Expose
         private Integer durationInSeconds;
 
+        @Ignore
         @SerializedName("id")
         @Expose
         private String id;
 
+        @Ignore
         @SerializedName("image")
         @Expose
         private Image__1 image;
 
+        @Ignore
         @SerializedName("primaryTitle")
         @Expose
         private PrimaryTitle primaryTitle;
 
+        @Ignore
         @SerializedName("title")
         @Expose
         private String title;

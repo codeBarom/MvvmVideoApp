@@ -7,9 +7,12 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Entity(tableName = "videos_table")
 public class VideosModel {
 
+        @ColumnInfo
         @PrimaryKey(autoGenerate = true)
         private int video_id;
         @ColumnInfo(name = "title")
@@ -27,12 +30,12 @@ public class VideosModel {
         @Expose
         private int year;
 
-        public VideosModel(int video_id, String title, String description, String image, int year) {
-                this.video_id = video_id;
+        public VideosModel(String title, String description, String image) {
+                /*this.video_id = video_id;*/
                 this.title = title;
                 this.description = description;
                 this.image = image;
-                this.year = year;
+                /*this.year = year;*/
         }
 
         public int getVideo_id() {

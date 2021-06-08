@@ -1,5 +1,6 @@
 package com.example.movies.Activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         private final Utils utils = new Utils();
         private FilmsAdapter filmsAdapter;
         private FilmViewModel filmViewModel;
-        int orientation;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
                 filmViewModel = ViewModelProviders.of(this).get(FilmViewModel.class);
 
+                if (utils.isNetworkAvailable(this))
+                        Toast.makeText(this, "Poor internet connection", Toast.LENGTH_SHORT).show();
                 mainBinding.progressBar.setVisibility(View.VISIBLE);
                 filmViewModel.init();
                 filmViewModel.getFilmsLiveData().observe(this, movies -> {
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                         filmsAdapter.notifyDataSetChanged();
                         mainBinding.progressBar.setVisibility(View.GONE);
                 });
+
+                mainBinding.fabFav.setOnClickListener(v -> startActivity(new Intent(this, FavouriteMovies.class)));
 
                 initSearchView();
         }
@@ -61,9 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
         private void initRecyclerView() {
                 filmsAdapter = new FilmsAdapter(Objects.requireNonNull(filmViewModel.getFilmsLiveData().getValue()), this);
+                int orientation = this.getResources().getConfiguration().orientation;
                 if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                         mainBinding.movRecycler.setLayoutManager(new GridLayoutManager(this, 4));
-                }else {
+                } else {
                         mainBinding.movRecycler.setLayoutManager(new GridLayoutManager(this, 2));
                 }
                 mainBinding.movRecycler.setAdapter(filmsAdapter);

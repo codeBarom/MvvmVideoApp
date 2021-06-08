@@ -23,8 +23,8 @@ public interface VideoDao {
         @Query("SELECT * from videos_table ORDER BY title ASC")
         LiveData<List<VideosModel>> getAllVideos();
 
-        @Query("SELECT * from videos_table LIMIT 1")
-        Video[] getAnyVideo();
+       /* @Query("SELECT * from videos_table LIMIT 1")
+        Video[] getAnyVideo();*/
 
         @Delete
         void deleteVideos(VideosModel video);

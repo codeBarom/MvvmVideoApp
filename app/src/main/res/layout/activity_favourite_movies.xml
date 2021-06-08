@@ -7,5 +7,33 @@
             android:layout_height="match_parent"
             tools:context=".Activities.FavouriteMovies">
 
+                <TextView
+                    android:id="@+id/fav_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/favourite_movies"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    tools:context=".Activities.MainActivity">
+
+                        <ProgressBar
+                            android:id="@+id/progress_bar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/favourite_movie_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:listitem="@layout/favourite_movies" />
+
+                </RelativeLayout>
         </RelativeLayout>
 </layout>
