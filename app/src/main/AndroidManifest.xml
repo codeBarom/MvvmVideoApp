@@ -15,7 +15,8 @@
             android:theme="@style/Theme.Movies"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
-                <activity android:name=".Activities.FilmDetails"></activity>
+                <activity android:name=".Activities.FavouriteMovies"></activity>
+                <activity android:name=".Activities.FilmDetails" />
                 <activity
                     android:name=".Activities.MainActivity"
                     android:screenOrientation="fullSensor">

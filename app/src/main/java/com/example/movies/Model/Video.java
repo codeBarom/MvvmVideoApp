@@ -5,29 +5,38 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+
 public class Video implements Serializable {
+
 
         @SerializedName("audioLanguage")
         @Expose
         private String audioLanguage;
+
         @SerializedName("contentType")
         @Expose
         private String contentType;
+
         @SerializedName("description")
         @Expose
         private String description;
+
         @SerializedName("durationInSeconds")
         @Expose
         private Integer durationInSeconds;
+
         @SerializedName("id")
         @Expose
         private String id;
+
         @SerializedName("image")
         @Expose
         private Image__1 image;
+
         @SerializedName("primaryTitle")
         @Expose
         private PrimaryTitle primaryTitle;
+
         @SerializedName("title")
         @Expose
         private String title;

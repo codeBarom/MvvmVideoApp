@@ -16,7 +16,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:background="@drawable/border_line"
-                    app:queryHint="artist, title" />
+                    app:queryHint="artist, title"
+                    app:voiceIcon="@drawable/ic_baseline_mic_24"
+                    app:goIcon="@drawable/ic_baseline_send_24"/>
 
                 <ProgressBar
                     android:id="@+id/progress_bar"

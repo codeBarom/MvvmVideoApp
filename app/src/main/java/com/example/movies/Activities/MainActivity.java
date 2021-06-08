@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -37,13 +38,29 @@ public class MainActivity extends AppCompatActivity {
                 filmViewModel.getFilmsLiveData().observe(this, movies -> {
                         initRecyclerView();
                         filmsAdapter.notifyDataSetChanged();
+                        mainBinding.progressBar.setVisibility(View.GONE);
+                });
+
+                initSearchView();
+        }
+
+        private void initSearchView() {
+                mainBinding.movieSearchBox.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                                //filmsAdapter.getFilter().filter(query);
+                                return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                                return false;
+                        }
                 });
         }
 
         private void initRecyclerView() {
                 filmsAdapter = new FilmsAdapter(Objects.requireNonNull(filmViewModel.getFilmsLiveData().getValue()), this);
-
-                if (filmsAdapter.getItemCount() == 0)
                 if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                         mainBinding.movRecycler.setLayoutManager(new GridLayoutManager(this, 4));
                 }else {

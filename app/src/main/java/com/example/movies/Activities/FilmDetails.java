@@ -16,15 +16,13 @@ public class FilmDetails extends AppCompatActivity {
         ActivityFilmDetailsBinding activityFilmDetailsBinding;
         private String title, type, image;
         private int year;
-        private Video filmsResponse;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
-                getWindow().setStatusBarColor(Color.TRANSPARENT);
                 activityFilmDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_film_details);
 
-                filmsResponse = (Video) getIntent().getSerializableExtra("films");
+                Video filmsResponse = (Video) getIntent().getSerializableExtra("films");
 
                 Picasso.get().load(String.valueOf(filmsResponse.getPrimaryTitle().getImage().getUrl())).into(activityFilmDetailsBinding.filmImage);
                 activityFilmDetailsBinding.filmTitle.setText(filmsResponse.getPrimaryTitle().getTitle());
